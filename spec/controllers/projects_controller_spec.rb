@@ -118,5 +118,4 @@ describe ProjectsController do
       response.should redirect_to projects_url
     end
   end
-
 end
