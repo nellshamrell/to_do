@@ -16,3 +16,9 @@ User can destroy a to do item from the list of items associated with a project
 User can see a checkbox next to a To Do item
 User can check a checkbox to indicate a To Do item is complete
 User can uncheck a checkbox to indicate a To Do item is not complete
+
+==UI==
+User sees not-done to do items at the top of the to do items list
+User sees not-done to do items appear on a red outlined background
+User sees done to do items at the bottom of the to do items list
+User sees not-done to do items appear on a green outlined background
