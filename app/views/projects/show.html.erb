@@ -1,9 +1,16 @@
+<%= link_to 'Edit Project', edit_project_path(@project) %> |
+<%= link_to 'Back', projects_path %>
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @project.name %>
-</p>
+<h1><%= @project.name %></h1>
+<br />
+<h2>To Do Items</h2>
+<%= link_to 'New Item', new_to_do_item_path(project: @project) %>
+<ul>
+  <% @project.to_do_items.each do |item| %>
+  <li>
+    <%= item.description %>
+  </li>
+  <% end %>
+</ul>
 
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>

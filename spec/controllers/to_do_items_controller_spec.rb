@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe ToDoItemsController do
+  let!(:project) { create(:project) }
   let!(:to_do_item) { create(:to_do_item) }
 
   describe "GET #index" do
@@ -29,19 +30,23 @@ describe ToDoItemsController do
 
   describe "GET #new" do
     it "assigns a new To Do Item to @to_do_item" do
-      get :new
+      get :new, project: project
       assigns(:to_do_item).should be_new_record
     end
 
     it "renders the :new template" do
-      get :new
+      get :new, project: project
       response.should render_template :new
+    end
+
+    it "assigns the item to the passed in proejct" do
+      get :new, project: project
+      assigns(:to_do_item).project.should == project
     end
   end
 
   describe "POST #create" do
     context "with valid attributes" do
-      let!(:project) { create(:project) }
 
       it "saves the new to do item in the database" do
         expect {

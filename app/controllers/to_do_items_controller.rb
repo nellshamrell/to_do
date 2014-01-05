@@ -9,7 +9,7 @@ class ToDoItemsController < ApplicationController
   end
 
   def new
-    @to_do_item = ToDoItem.new
+    @to_do_item = ToDoItem.new(project: Project.find(params[:project]))
   end
 
   def edit

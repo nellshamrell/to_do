@@ -6,6 +6,7 @@ User can edit a project (DONE)
   - User can see a form to edit a project (DONE)
   - User can update a project (DONE)
 User can destroy a project (DONE)
+  - When a user destroys a project, it also destroys the to do items associated with the project
 
 User can add a to do item to a project
   - User can see a new to do item form for a project

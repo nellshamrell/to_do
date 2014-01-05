@@ -11,10 +11,8 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :project %><br>
-    <%= f.text_field :project %>
-  </div>
+  <%= f.hidden_field :project_id, value: @to_do_item.project.id %>
+
   <div class="field">
     <%= f.label :description %><br>
     <%= f.text_field :description %>
