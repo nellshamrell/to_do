@@ -4,18 +4,6 @@ describe ToDoItemsController do
   let!(:project) { create(:project) }
   let!(:to_do_item) { create(:to_do_item) }
 
-  describe "GET #index" do
-    it "populates an array of to_do_items" do
-      get :index
-      assigns(:to_do_items).should == ([to_do_item])
-    end
-
-    it "renders the :index view" do
-      get :index
-      response.should render_template :index
-    end
-  end
-
   describe "GET #show" do
     it "assigns the requested to_do_item to @to_do_item" do
       get :show, id: to_do_item

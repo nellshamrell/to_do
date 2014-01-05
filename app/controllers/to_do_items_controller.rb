@@ -1,10 +1,6 @@
 class ToDoItemsController < ApplicationController
   before_action :set_to_do_item, only: [:show, :edit, :update, :destroy]
 
-  def index
-    @to_do_items = ToDoItem.all
-  end
-
   def show
   end
 
