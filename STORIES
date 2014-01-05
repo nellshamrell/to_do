@@ -1,21 +1,20 @@
-== Projects ==
-User can see a form for a new project
-User can create a project
-User can see a form to edit a project
-User can update a project
-User can see a list of projects
-User can destroy a project from the list of projects
+User accesses application URL and sees list of projects (DONE)
+User can add a new project
+  - User can see a form for a new project (DONE)
+  - User can create a project (DONE)
+User can edit a project (DONE)
+  - User can see a form to edit a project (DONE)
+  - User can update a project (DONE)
+User can destroy a project (DONE)
 
-== To Do Items ==
-User can see a new to do item form FOR A PROJECT
-User can create to do item associated with a project
-User can see a form to edit a to do item
-User can update a to do item
-User can see a list of to do items associated with a project
-User can destroy a to do item from the list of items associated with a project
-User can see a checkbox next to a To Do item
-User can check a checkbox to indicate a To Do item is complete
-User can uncheck a checkbox to indicate a To Do item is not complete
+User can add a to do item to a project
+  - User can see a new to do item form for a project
+  - User can create a to do item associated with a project
+U
+User can see a list of to do items for a project
+  - User can edit a to do item
+  - User can update a to do item
+  - User can destroy a to do item
 
 ==UI==
 User sees not-done to do items at the top of the to do items list
