@@ -1,8 +1,5 @@
 class ToDoItemsController < ApplicationController
-  before_action :set_to_do_item, only: [:show, :edit, :update, :destroy]
-
-  def show
-  end
+  before_action :set_to_do_item, only: [:edit, :update, :destroy]
 
   def new
     @to_do_item = ToDoItem.new(project: Project.find(params[:project]))
@@ -15,7 +12,7 @@ class ToDoItemsController < ApplicationController
     @to_do_item = ToDoItem.new(to_do_item_params)
     respond_to do |format|
       if @to_do_item.save
-        format.html { redirect_to @to_do_item, notice: 'To do item was successfully created.' }
+        format.html { redirect_to project_url(@to_do_item.project), notice: 'To do item was successfully created.' }
       else
         format.html { render action: 'new' }
       end
@@ -25,7 +22,7 @@ class ToDoItemsController < ApplicationController
   def update
     respond_to do |format|
       if @to_do_item.update(to_do_item_params)
-        format.html { redirect_to @to_do_item, notice: 'To do item was successfully updated.' }
+        format.html { redirect_to project_url(@to_do_item.project), notice: 'To do item was successfully updated.' }
       else
         format.html { render action: 'edit' }
       end
@@ -33,9 +30,11 @@ class ToDoItemsController < ApplicationController
   end
 
   def destroy
+    project = @to_do_item.project
+
     @to_do_item.destroy
     respond_to do |format|
-      format.html { redirect_to to_do_items_url }
+      format.html { redirect_to project_url(project) }
     end
   end
 

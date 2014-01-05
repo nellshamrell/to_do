@@ -4,18 +4,6 @@ describe ToDoItemsController do
   let!(:project) { create(:project) }
   let!(:to_do_item) { create(:to_do_item) }
 
-  describe "GET #show" do
-    it "assigns the requested to_do_item to @to_do_item" do
-      get :show, id: to_do_item
-      assigns(:to_do_item).should == to_do_item
-    end
-
-    it "renders the :show template" do
-      get :show, id: to_do_item
-      response.should render_template :show
-    end
-  end
-
   describe "GET #new" do
     it "assigns a new To Do Item to @to_do_item" do
       get :new, project: project
@@ -42,9 +30,9 @@ describe ToDoItemsController do
         }.to change(ToDoItem, :count).by(1)
       end
 
-      it "redirects to the new to do item" do
+      it "redirects to the project" do
         post :create, {:to_do_item => FactoryGirlHelper.build_attributes(:to_do_item)}
-        response.should redirect_to ToDoItem.last
+        response.should redirect_to project_url(Project.last)
       end
     end
 
@@ -75,9 +63,9 @@ describe ToDoItemsController do
         to_do_item.description.should == "something else"
       end
 
-      it "redirects to the updated to do item" do
+      it "redirects to the project" do
         put :update, id: to_do_item, :to_do_item => FactoryGirlHelper.build_attributes(:to_do_item, description: "something else")
-        response.should redirect_to to_do_item
+        response.should redirect_to project_url(Project.last)
       end
     end
 
@@ -107,9 +95,9 @@ describe ToDoItemsController do
       }.to change(ToDoItem,:count).by(-1)
     end
 
-    it "redirects to to_do_items#index" do
+    it "redirects to the project show page" do
       delete :destroy, id: to_do_item
-      response.should redirect_to to_do_items_url
+      response.should redirect_to project_url(Project.last)
     end
   end
 end
