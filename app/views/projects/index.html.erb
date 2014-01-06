@@ -6,8 +6,16 @@
   <tbody>
     <% @projects.each do |project| %>
       <tr>
+        <td><%= link_to project.name, project_path(project), :class => 'btn btn-link btn-block' %></td>
         <td>
-          <%= link_to project.name, project_path(project), :class => 'btn btn-link btn-block' %></td>
+          <div class="btn-container">
+          <%= button_to "View",
+                    project_path(project),
+                    method: :get,
+                    class: 'btn btn-success btn-block'
+           %>
+          </div>
+        </td>
 
         <td>
           <div class="btn-container">
