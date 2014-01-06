@@ -1,27 +1,25 @@
-<%= form_for(@to_do_item) do |f| %>
-  <% if @to_do_item.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@to_do_item.errors.count, "error") %> prohibited this to_do_item from being saved:</h2>
+<tr>
+  <%= form_for(@to_do_item) do |f| %>
+    <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
 
-      <ul>
-      <% @to_do_item.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
+    <% if @to_do_item.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@to_do_item.errors.count, "error") %> prohibited this to_do_item from being saved:</h2>
+
+        <ul>
+        <% @to_do_item.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <td colspan=3>
+      <%= f.hidden_field :project_id, value: @to_do_item.project.id %>
+      <%= f.hidden_field :done, value: false %>
+
+      <%= f.text_field :description %>
+      <%= f.submit "Add", class: "btn btn-info" %>
+    </td>
   <% end %>
-
-  <%= f.hidden_field :project_id, value: @to_do_item.project.id %>
-
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_field :description %>
-  </div>
-  <div class="field">
-    <%= f.label :done %><br>
-    <%= f.check_box :done %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</tr>

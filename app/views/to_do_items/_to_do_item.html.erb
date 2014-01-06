@@ -1,5 +1,12 @@
-  <li>
-    <%= to_do_item.description %>
-    <%= link_to 'Destroy', to_do_item, method: :delete, data: { confirm: 'Are you sure?' } %>
-  </li>
+  <tr>
+    <td>
+      <%= to_do_item.description %>
+    </td>
+    <td>
+      <%= to_do_item.done %>
+    </td>
+    <td>
+      <%= link_to 'Destroy', to_do_item, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </td>
+  </tr>
 

@@ -1,15 +1,30 @@
-<%= link_to 'Edit Project', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>
-<p id="notice"><%= notice %></p>
-
-<h1><%= @project.name %></h1>
-<br />
-<h2>To Do Items</h2>
-
-<%= link_to 'New Item', new_to_do_item_path(project: @project), remote: true %>
-<div id="to_do_items">
-  <ul>
-    <%= render(@project.to_do_items) %>
-  </ul>
+<%- model_class = Project -%>
+<div class="page-header">
+  <h1><%= @project.name %>
 </div>
 
+  <h2>Tasks</h2>
+  <div id="to_do_items">
+
+  <table class="table table-striped" id="task-table">
+    <thead>
+      <th>Description</th>
+      <th>Done?</th>
+    </thead>
+    <%= render(@project.to_do_items) %>
+  </table>
+
+  <%= button_to 'New Task', new_to_do_item_path(project: @project), method: :get, remote: true, class: 'btn btn-primary' %>
+  </div>
+
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              projects_path, :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_project_path(@project), :class => 'btn' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              project_path(@project),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>
