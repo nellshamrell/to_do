@@ -25,12 +25,17 @@ class ToDoItemsController < ApplicationController
   end
 
   def update
+    # Currently, tasks can only be updated to be done or undone
+    if @to_do_item.done?
+      @to_do_item.done = false
+    else
+      @to_do_item.done = true
+    end
+
+    @to_do_item.save!
+
     respond_to do |format|
-      if @to_do_item.update(to_do_item_params)
         format.html { redirect_to project_url(@to_do_item.project), notice: 'To do item was successfully updated.' }
-      else
-        format.html { render action: 'edit' }
-      end
     end
   end
 

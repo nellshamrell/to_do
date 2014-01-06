@@ -50,40 +50,40 @@ describe ToDoItemsController do
     end
   end
 
-  describe "PUT update" do
+  describe "PUT #update" do
     context "with valid attributes" do
       it "locates the requested to do item" do
         put :update, id: to_do_item, :to_do_item => FactoryGirlHelper.build_attributes(:to_do_item)
         assigns(:to_do_item).should == to_do_item
       end
 
-      it "changes the to do item's attributes" do
-        put :update, id: to_do_item, :to_do_item => FactoryGirlHelper.build_attributes(:to_do_item, description: "something else")
-        to_do_item.reload
-        to_do_item.description.should == "something else"
+      context "when the task is undone" do
+        it "marks the task as done" do
+          to_do_item.done.should be_false
+          put :update, id: to_do_item, :to_do_item => FactoryGirlHelper.build_attributes(:to_do_item)
+          to_do_item.reload
+          to_do_item.done.should be_true
+        end
+      end
+
+      context "when the task is done" do
+        before(:each) do
+          to_do_item.done = true
+          to_do_item.save!
+          to_do_item.reload
+          to_do_item.done.should be_true
+        end
+
+        it "marks the task as undone" do
+          put :update, id: to_do_item, :to_do_item => FactoryGirlHelper.build_attributes(:to_do_item)
+          to_do_item.reload
+          to_do_item.done.should be_false
+        end
       end
 
       it "redirects to the project" do
         put :update, id: to_do_item, :to_do_item => FactoryGirlHelper.build_attributes(:to_do_item, description: "something else")
-        response.should redirect_to project_url(Project.last)
-      end
-    end
-
-    context "with invalid attributes" do
-      it "locates the requested to do item" do
-        put :update, id: to_do_item, :to_do_item => FactoryGirlHelper.build_attributes(:to_do_item, description: nil)
-        assigns(:to_do_item).should == to_do_item
-      end
-
-      it "does not change the to do item's attributes" do
-        put :update, id: to_do_item, :to_do_item => FactoryGirlHelper.build_attributes(:to_do_item, description: nil)
-        to_do_item.reload
-        to_do_item.description.should_not be_nil
-      end
-
-      it "re-renders the edit template" do
-        put :update, id: to_do_item, :to_do_item => FactoryGirlHelper.build_attributes(:to_do_item, description: nil)
-        response.should render_template :edit
+        response.should redirect_to project_url(to_do_item.project)
       end
     end
   end
