@@ -15,9 +15,12 @@ User can add a to do item to a project (DONE)
   - User can create multiple to do items associated with a project
 
 User can see a list of to do items for a project (DONE)
-  - User can edit a to do item (DONE)
-  - User can update a to do item (DONE)
+  - User can mark a to do item as complete
   - User can destroy a to do item (DONE)
+  - User sees non-complete to do items at the top of the to do items list
+  - User sees non-complete to do items appear on a red outlined background
+  - User sees complete to do items at the bottom of the to do items list
+  - User sees complete to do items appear on a green outlined background
 
 ==UI==
 User sees not-done to do items at the top of the to do items list
