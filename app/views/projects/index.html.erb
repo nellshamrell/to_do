@@ -20,16 +20,19 @@
         <td>
           <div class="btn-container">
             <%= button_to "Edit",
-                      edit_project_path(project), :class => 'btn btn-warning btn-block'%>
+                      edit_project_path(project),
+                      method: :get,
+                      class:'btn btn-warning btn-block'
+            %>
           </div>
         </td>
         <td>
           <div class="btn-container">
             <%= button_to "Destroy",
                       project_path(project),
-                      :method => :delete,
-                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                      :class => 'btn btn-danger btn-block' %>
+                      method: :delete,
+                      data: { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      class: 'btn btn-danger btn-block' %>
           </div>
         </td>
       </tr>
@@ -40,4 +43,4 @@
 <%= button_to "New Project",
             new_project_path,
             method: :get,
-            :class => 'btn btn-primary' %>
+            class: 'btn btn-primary' %>
