@@ -1,12 +1,16 @@
   <tr>
     <td>
+      <% if to_do_item.done? %>
+        <%= button_to 'Not Done', to_do_item, method: :put %>
+      <% else %>
+        <%= button_to 'Done', to_do_item, method: :put %>
+      <% end %>
+    </td>
+    <td>
       <%= to_do_item.description %>
     </td>
     <td>
-      <%= to_do_item.done %>
-    </td>
-    <td>
-      <%= link_to 'Destroy', to_do_item, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <%= button_to 'Destroy', to_do_item, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
     </td>
   </tr>
 
