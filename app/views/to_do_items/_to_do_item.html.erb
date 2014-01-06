@@ -1,9 +1,7 @@
   <tr>
     <td>
-      <% if to_do_item.done? %>
-        <%= button_to 'Not Done', to_do_item, method: :put %>
-      <% else %>
-        <%= button_to 'Done', to_do_item, method: :put %>
+      <% unless to_do_item.done? %>
+        <%= button_to 'Done!', to_do_item, method: :put, class: 'btn btn-success' %>
       <% end %>
     </td>
     <td>

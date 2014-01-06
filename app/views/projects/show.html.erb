@@ -3,15 +3,15 @@
   <h1><%= @project.name %>
 </div>
 
-  <h2>Tasks</h2>
-  <div id="to_do_items">
+<h2>Tasks</h2>
+<div id="to_do_items">
 
-  <table class="table table-striped" id="task-table">
-    <%= render(@project.to_do_items) %>
-  </table>
+<table class="table table-striped" id="task-table">
+  <%= render(@project.to_do_items) %>
+</table>
 
-  <%= button_to 'New Task', new_to_do_item_path(project: @project), method: :get, remote: true, class: 'btn btn-primary' %>
-  </div>
+<%= button_to 'New Task', new_to_do_item_path(project: @project), method: :get, remote: true, class: 'btn btn-primary' %>
+</div>
 
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),
