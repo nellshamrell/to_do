@@ -7,12 +7,6 @@
 <h2>To Do Items</h2>
 <%= link_to 'New Item', new_to_do_item_path(project: @project) %>
 <ul>
-  <% @project.to_do_items.each do |item| %>
-  <li>
-    <%= item.description %>
-    <%= link_to 'Edit', edit_to_do_item_path(item) %> |
-    <%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %>
-  </li>
-  <% end %>
+  <%= render(@project.to_do_items) %>
 </ul>
 
