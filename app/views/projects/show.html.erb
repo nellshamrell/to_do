@@ -5,8 +5,11 @@
 <h1><%= @project.name %></h1>
 <br />
 <h2>To Do Items</h2>
-<%= link_to 'New Item', new_to_do_item_path(project: @project) %>
-<ul>
-  <%= render(@project.to_do_items) %>
-</ul>
+
+<%= link_to 'New Item', new_to_do_item_path(project: @project), remote: true %>
+<div id="to_do_items">
+  <ul>
+    <%= render(@project.to_do_items) %>
+  </ul>
+</div>
 
