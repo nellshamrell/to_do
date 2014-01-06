@@ -3,8 +3,10 @@ class ToDoItemsController < ApplicationController
 
   def new
     @to_do_item = ToDoItem.new(project: Project.find(params[:project]))
+
     respond_to do |format|
       format.js
+      format.html
     end
   end
 
