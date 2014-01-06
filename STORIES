@@ -9,13 +9,15 @@ User can destroy a project (DONE)
   - When a user destroys a project, it also destroys the to do items associated with the project
 
 User can add a to do item to a project (DONE)
-  - User can see a new to do item form for a project (DONE)
-  - User can create a to do item associated with a project (DONE)
-U
+  - User can click on a New To Do Item link (DONE)
+    - User sees a new to do item form appear on the project show view
+    - User can create a to do item associated with a project
+  - User can create multiple to do items associated with a project
+
 User can see a list of to do items for a project (DONE)
-  - User can edit a to do item
-  - User can update a to do item
-  - User can destroy a to do item
+  - User can edit a to do item (DONE)
+  - User can update a to do item (DONE)
+  - User can destroy a to do item (DONE)
 
 ==UI==
 User sees not-done to do items at the top of the to do items list
