@@ -85,6 +85,18 @@ describe ToDoItemsController do
         put :update, id: to_do_item, :to_do_item => FactoryGirlHelper.build_attributes(:to_do_item, description: "something else")
         response.should redirect_to project_url(to_do_item.project)
       end
+
+      context "when an error is returned" do
+        before(:each) do
+          ToDoItem.stub(:find).and_return(to_do_item)
+          to_do_item.stub(:save!).and_return(false)
+        end
+
+        it "shows an error" do
+          put :update, id: to_do_item, :to_do_item => FactoryGirlHelper.build_attributes(:to_do_item, description: "something else")
+          flash[:notice].should include("An error occurred.  Please try again.")
+        end
+      end
     end
   end
 
