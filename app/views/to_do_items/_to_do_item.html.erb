@@ -1,4 +1,4 @@
-  <tr>
+  <tr class=<%= row_class(to_do_item) %>>
     <td>
       <% unless to_do_item.done? %>
         <%= button_to 'Done!', to_do_item, method: :put, class: 'btn btn-success' %>

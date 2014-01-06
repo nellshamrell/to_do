@@ -1,3 +1,11 @@
 // Place all the styles related to the ToDoItems controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.non-done-item {
+  background-color: #FFFF99;
+}
+
+.done-item {
+  background-color: #66FF99;
+}
